@@ -1,5 +1,6 @@
 from flask import Flask, render_template,request
 import math
+import forms
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ def index():
 
 
 @app.route('/calculos',methods=['GET','POST'])
-def about2():
+def calculos():
     if request.method == 'POST':
         numero1 = request.form['numero1']
         numero2 = request.form['numero2']
@@ -31,7 +32,7 @@ def about2():
     return render_template('calculos.html')
 
 @app.route('/distancia',methods=['GET','POST'])
-def about3():
+def distancia():
     if request.method == 'POST':
         numero1 = float (request.form['numero1']) 
         numero2 = float (request.form['numero2'])
@@ -44,6 +45,20 @@ def about3():
                                 numero1=numero1, numero2=numero2, numero3=numero3, numero4=numero4)
     return render_template('distancia.html')
 
+@app.route('/Alumnos', methods=['GET','POST'])
+def alumnos():
+    mat=0
+    nom=""
+    ape=""
+    email=""
+    alumnos_class = forms.UserForm(request.form)
+    if request.method == 'POST' and alumnos_class.validate:
+        mat=alumnos_class.matricula.data
+        nom=alumnos_class.nombre.data
+        ape=alumnos_class.apellido.data
+        email=alumnos_class.correo.data
+    return render_template('Alumnos.html',form=alumnos_class,
+            mat=mat,nom=nom,ape=ape, email=email)
 
 @app.route('/calculos')
 def about0():
