@@ -1,6 +1,15 @@
  {% extends "layout.html"%}
+   {% import "_macros.html" as datos_macro %}
              {%block container%}
               
-    <h1>Distancia</h1>
+    <h1>Distancia entre dos numeros</h1>
+    <form acction="" method="POST">
+        {{datos_macro.datos('numero1','X1: ') }}
+        {{datos_macro.datos('numero2','y1: ') }}
+        {{datos_macro.datos('numero3','X2: ') }}
+        {{datos_macro.datos('numero4','y2: ') }}
 
+        <button type="submit" class="btn btn-primary">Clacular</button>
+        <h1>RESPUESTA = {{res}} </h1>
+    </form>
     {%endblock%}

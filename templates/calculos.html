@@ -1,4 +1,6 @@
- {% extends "layout.html"%}
+
+
+{% extends "layout.html"%} 
   {% import "_macros.html" as datos_macro %}
         {%block container%}
             
@@ -17,7 +19,8 @@
                     <option value="division">Division</option>
                 </select>
         </div>
-        <button type="button" class="btn btn-primary">Resolver</button>
+        <button type="submit" class="btn btn-primary">Resolver</button>
     </form>
+    <h1>Suma de {{numero1}} y {{numero2}} = {{res}} </h1>
 
     {%endblock%}
