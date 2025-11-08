@@ -1,0 +1,19 @@
+
+
+{% macro camposNuevos(field) %}
+<div class="form-group">
+    <label for="{{ field.id }}">{{ field.label.text }}</label>
+    {{ field(class="form-control", **kwargs)|safe }}
+    {% if field.errors %}
+        <div class="text-danger">
+            {% for error in field.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+
+
+
